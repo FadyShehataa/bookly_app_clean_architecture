@@ -1,5 +1,6 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/app_router.dart';
+import 'package:bookly/core/utils/service_locator.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -7,6 +8,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'Features/home/domain/entities/book_entity.dart';
 
 void main() async {
+  setupServiceLocator();
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox<BookEntity>(kFeaturedBooks);
@@ -30,7 +32,6 @@ class BooklyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark().copyWith(
         scaffoldBackgroundColor: kPrimaryColor,
-        // textTheme: GoogleFonts.montserratTextTheme(ThemeData.dark().textTheme),
       ),
     );
   }
