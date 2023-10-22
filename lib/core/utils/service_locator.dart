@@ -28,5 +28,4 @@ void setupServiceLocator() {
 
   getIt.registerSingleton<FetchNewestBooksUseCase>(
       FetchNewestBooksUseCase(getIt<HomeRepoImpl>()));
-
 }
