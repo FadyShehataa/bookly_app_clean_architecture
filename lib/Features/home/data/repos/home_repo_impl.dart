@@ -16,7 +16,7 @@ class HomeRepoImpl implements HomeRepo {
   @override
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks({required int pageNumber}) async {
     try {
-      List<BookEntity> books = homeLocalDataSource.fetchFeaturedBooks();
+      List<BookEntity> books = homeLocalDataSource.fetchFeaturedBooks(pageNumber: pageNumber);
       if (books.isEmpty) {
         books = await homeRemoteDataSource.fetchFeaturedBooks(pageNumber: pageNumber);
       }
